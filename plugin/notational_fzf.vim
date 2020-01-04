@@ -124,7 +124,13 @@ endfunction
 let s:use_short_pathnames = get(g:, 'nv_use_short_pathnames', 1)
 
 " Python 3 is required for this to work
-let s:python_executable = executable('pypy3') ? 'pypy3' : 'python3'
+if exists('g:nv_python_executable') && executable(expand(get(g:, 'nv_python_executable', '')))
+    let s:python_executable = expand(get(g:, 'nv_python_executable', ''))
+else
+    let s:python_executable = executable('pypy3') ? 'pypy3' : 'python3'
+endif
+" echomsg 's:python_executable:' .  s:python_executable
+
 let s:highlight_path_expr = join([s:python_executable , '-S',expand('<sfile>:p:h:h') . '/print_lines.py' , '{2} {1} ', '2>' . s:null_path,])
 
 if s:use_short_pathnames

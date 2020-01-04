@@ -233,6 +233,11 @@ let g:nv_ignore_pattern = ['summarize-*', 'misc*']
 " handler function. Most users won't want to set this to anything.
 
 let g:nv_expect_keys = []
+
+" String.  In case `Pypy3` or `Python3` are not part of the default PATH, you
+" can specify the complete path of the executable to be used for the preview 
+" window and filepath shortening. 
+let g:nv_python_executable = '~/.pyenv/versions/3.7.1/bin/python3'
 ```
 
 You can also define your own handler function, in case you don't like
